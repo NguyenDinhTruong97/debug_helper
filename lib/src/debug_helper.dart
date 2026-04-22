@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:debug_helper/src/model/devcie_data.dart';
 import 'package:debug_helper/src/model/event_data.dart';
 import 'package:debug_helper/src/model/exception_data.dart';
 import 'package:debug_helper/src/model/fcm_data.dart';
@@ -16,6 +17,7 @@ class DebugHelper {
   List<ExceptionData> exceptions = [];
   List<EventData> events = [];
   List<FCMData> notis = [];
+  DeviceData? deviceData;
 
   int mShakeTimestamp = DateTime.now().millisecondsSinceEpoch;
   int mShakeCount = 0;
@@ -51,6 +53,14 @@ class DebugHelper {
   static addRemoteMessage(FCMData data) {
     try {
       if (_instance?.shouldLog ?? false) _instance?.notis.add(data);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  static void logDeviceData(DeviceData data) {
+    try {
+      if (_instance?.shouldLog ?? false) _instance?.deviceData = data;
     } catch (e) {
       debugPrint(e.toString());
     }
