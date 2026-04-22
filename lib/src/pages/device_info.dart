@@ -18,6 +18,7 @@ class DeviceInfo extends StatelessWidget {
               child: Text("No Device Data"),
             )
           : SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
                   _DataTile(label: "Device Name", content: data.deviceName),
@@ -55,11 +56,17 @@ class _DataTile extends StatelessWidget {
           children: [
             Row(
               children: [
-                Text(label),
+                Text("$label :"),
                 const SizedBox(width: 16),
-                Expanded(child: Text(content)),
+                Expanded(
+                  child: Text(
+                    content,
+                    textAlign: TextAlign.end,
+                  ),
+                ),
               ],
             ),
+            const SizedBox(height: 8),
             const Divider(
               color: Colors.grey,
               height: 1,
