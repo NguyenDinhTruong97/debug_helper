@@ -1,4 +1,5 @@
 import 'package:debug_helper/src/extentions.dart';
+import 'package:debug_helper/src/pages/device_info.dart';
 import 'package:debug_helper/src/pages/fcm_log_page.dart';
 import 'package:debug_helper/src/pages/http_code_explain.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +44,11 @@ class DebugCatalogPage extends StatelessWidget {
           _Item(
             title: 'Http Status Code Explain',
             onTap: () => context.to(const HttpCodeExplain()),
+          ),
+          const Divider(),
+          _Item(
+            title: 'Device Data',
+            onTap: () => context.to(const DeviceInfo()),
           ),
         ],
       ),
